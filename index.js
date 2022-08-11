@@ -23,7 +23,7 @@ app.get('/', async function (req, res) {
     // }
     // res.end(stream)
     // return stream;
-    yt.getStream("UC21SYgktERtPmPMnOQ34SHw")
+    yt.getStream(req.query.channelId)
         .then(data => 
             res.end(JSON.stringify(data))
             )
