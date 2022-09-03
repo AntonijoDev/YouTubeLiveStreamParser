@@ -8,21 +8,21 @@ const port = 5001;
 
 app.get('/', async function (req, res) {
 
-    // let url = 'https://www.youtube.com/channel/' + "UC21SYgktERtPmPMnOQ34SHw" + '/live';
-    // const {body} = await request(url);
-    // console.log(body)
-    // let bodyText = await body.text();
-    // console.log(bodyText)
-    // let stream = bodyText.match(/(?<=hlsManifestUrl":").*\.m3u8/g);
-    // if (stream) {
-    //     console.log(stream)
-    // } else { 
-    //     console.log('Check channel id')
-    //     res.end('Check channel id')
+    let url = 'https://www.youtube.com/channel/' + "UCJijBcgPyeSShZQK6T4khTA" + '/live';
+    const {body} = await request(url);
+    console.log(body)
+    let bodyText = await body.text();
+    console.log(bodyText)
+    let stream = bodyText.match(/(?<=hlsManifestUrl":").*\.m3u8/g);
+    if (stream) {
+        console.log(stream)
+    } else { 
+        console.log('Check channel id')
+        res.end('Check channel id')
 
-    // }
-    // res.end(stream)
-    // return stream;
+    }
+    res.end(stream)
+    return stream;
     yt.getStream(req.query.channelId)
         .then(data => 
             res.end(JSON.stringify(data))
